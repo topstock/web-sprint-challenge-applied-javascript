@@ -38,7 +38,9 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
-  return document.querySelector(selector).appendChild(Header("Bow Wow Wow on a Tuesday?",  "October 29th, 2021", "20&#176;F"));
+  let date = new Date(Date.now());
+  let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+  return document.querySelector(selector).appendChild(Header("Lambda Times",  ` ${months[date.getMonth() - 1 ]} ${date.getDate()}, ${date.getFullYear()}`, "20ºF"));
 }
 
-export { Header, headerAppender }
+export { Header, headerAppender}
