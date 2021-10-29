@@ -60,7 +60,21 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is the DOM?
+
+    Answer: The Document Object Model (DOM) is a visualization tool for tracking the inheritance and events on nested nodes' parents, children, and siblings.  In this way it is shaped like a branching family tree, but the family members are nodes.  The topmost object in the model is the document object which loads inside of the window object. 
+
 2. What is an event?
+
+   Answer: An instance of JavaScript handler function receiving or sending a message with HTML is an event. Events inculde many types of browser input from a mouse or keyboard and data on what nodes/elements load in the browser. 
+
 3. What is an event listener?
+
+   Answer: An event listener is a function that receives the confirmation of each instance of a specified event on a specified object and passes it to an event handler function.
+
 4. Why would we convert a NodeList into an Array?
+
+    Answer: NodeLists make useful arrays when Array.prototype iterators can keep the code DRY, such as assigning classes to several types of elements nested in different separate elements.
+
 5. What is a component?
+
+    Answer: A component is a function that creates new document element (and its child elements/nodes) in memory, assigns classes, content, and attributes, and finally appends the children to the parent which is then the output of the return statement.  A component does not directly append itself to any elements currently loaded in a browser.  
