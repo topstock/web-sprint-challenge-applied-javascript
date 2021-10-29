@@ -20,10 +20,12 @@ const Tabs = (topics) => {
     let elem = document.createElement('div');
     elem.classList.add('tab');
     elem.textContent = item;
+    elem.addEventListener('click', () => {
+      sessionStorage.setItem('tabTopic', item)
+      location.reload(); 
+    });
     tabsContainer.appendChild(elem);
   });
-
-
   return tabsContainer
 }
 
@@ -40,7 +42,7 @@ axios.get('http://localhost:5000/api/topics')
     return document.querySelector(selector).appendChild(Tabs(tabsArray))
   })
   .catch( err =>  err)
-  
+  return
 }
 
 export { Tabs, tabsAppender }

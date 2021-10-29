@@ -26,7 +26,6 @@ const Card = (article) => {
   const portrait = document.createElement('img');
   const nameSpan = document.createElement('span');
 
-
   imgContainer.appendChild(portrait);
   
   authorDiv.appendChild(imgContainer);
@@ -44,6 +43,8 @@ const Card = (article) => {
   portrait.setAttribute('src', article.authorPhoto)
   nameSpan.textContent = article.authorName;
 
+  cardDiv.addEventListener('click', () => console.log(article.headline));
+
   return cardDiv
 }
 
@@ -56,14 +57,19 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  const tabTopic = sessionStorage.getItem('tabTopic');
   axios.get('http://localhost:5000/api/articles')
     .then( (res) => {
       Object.entries(res.data.articles).forEach( topic => {
-        topic[1].forEach( art => document.querySelector(selector).appendChild(Card(art)))
-      })
+        if ((typeof tabTopic === 'string' && tabTopic === topic[0]) || typeof tabTopic != 'string'){
+          topic[1].forEach( art => document.querySelector(selector).appendChild(Card(art)))
+        }
+      });
+      
+      sessionStorage.removeItem('tabTopic');
     })
     .catch( err => err)
-    
+  return  
 }
 
 export { Card, cardAppender }
